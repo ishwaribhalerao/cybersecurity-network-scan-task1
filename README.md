@@ -38,44 +38,49 @@ Used `ifconfig` to find my local IP address and subnet:
 Command used:
 ```bash
 nmap -sS 192.168.38.0/24
+```
 
-📎 Screenshot: 02-nmap-scan.jpg
-🔍 Scan Results Summary
-Host IP	Open Port	Service	Notes
-192.168.38.1	7070	realserver	Could be a web or proxy server
-192.168.38.2	53	domain (DNS)	Standard DNS service
-192.168.38.254	None	All filtered	No response to probes
-192.168.38.128	None	All closed	Host is well-secured
-3. Wireshark Packet Analysis
+## 🛰️ Nmap Scan
+📎 _Screenshot: `02-nmap-scan.jpg`_
 
-    Captured DNS and TLS traffic.
+### 🔍 Scan Results Summary
 
-    Applied filter: udp.port == 53
+| Host IP         | Open Port | Service      | Notes                            |
+|-----------------|-----------|--------------|----------------------------------|
+| 192.168.38.1    | 7070      | realserver   | Could be a web or proxy server   |
+| 192.168.38.2    | 53        | domain (DNS) | Standard DNS service             |
+| 192.168.38.254  | None      | All filtered | No response to probes            |
+| 192.168.38.128  | None      | All closed   | Host is well-secured             |
 
-    Observed secure communication (TLS 1.3) and DNS queries.
+---
 
-📎 Screenshot: 03-wireshark.jpg
-🛡️ Security Analysis
+## 🧪 Wireshark Packet Analysis
 
-    Port 7070 is non-standard; investigate its use. May pose risk if unnecessary or outdated.
+- Captured **DNS** and **TLS** traffic.
+- Applied filter:  
+  ```udp.port == 53```
+- Observed secure communication (TLS 1.3) and DNS queries.
 
-    Port 53 is expected for DNS, but should be monitored for unusual activity (e.g., DNS tunneling).
+📎 _Screenshot: `03-wireshark.jpg`_
 
-    .128 (host machine) and .254 show good security posture.
+---
 
-📁 Repository Contents
-File/Folder	Description
-screenshots/	All task screenshots
-scan_results.txt (optional)	Saved raw Nmap output
-README.md	Documentation of the task
-✅ Conclusion
+## 🛡️ Security Analysis
+
+- **Port 7070** is non-standard; investigate its use. It may pose a risk if unnecessary or outdated.
+- **Port 53** is expected for DNS but should be monitored for unusual activity (e.g., DNS tunneling).
+- **192.168.38.128** (host machine) and **.254** show a strong security posture with no open or responding ports.
+
+---
+
+## ✅ Conclusion
 
 This task helped me understand:
 
-    How to perform a stealth network scan using Nmap
+- How to perform a **stealth network scan** using Nmap  
+- How to **interpret port and service data** from scan results  
+- How to **capture and filter traffic** using Wireshark  
+- How to **identify and assess vulnerabilities** in a local network
 
-    How to interpret port and service data
 
-    How to capture and filter traffic using Wireshark
 
-    How to assess potential vulnerabilities in a local network
