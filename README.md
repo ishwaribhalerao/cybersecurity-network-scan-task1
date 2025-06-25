@@ -39,8 +39,6 @@ Command used:
 ```bash
 nmap -sS 192.168.38.0/24
 ```
-
-## 🛰️ Nmap Scan
 📎 _Screenshot: `02-nmap-scan.jpg`_
 
 ### 🔍 Scan Results Summary
